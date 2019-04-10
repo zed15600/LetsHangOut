@@ -1,4 +1,15 @@
-<DIV class="index" id="restaurante_index">
-  <h1>Lista de Restaurantes</h1>
+<DIV class= "index" id="restaurantes_index">
+  <H1>Lista de Restaurantes</H1>
+  <%= link_to "Nuevo Restaurante", new_restaurante_path %> |
+  <%= link_to "Regresar", root_path %>
+  <TABLE>
+    <TR>
+      <TH>Nombre</TH>
+    </TR>
+    <% @restaurantes.each do |restaurante| %>
+      <TR>
+        <TD><%= restaurante.nombre %></TD>
+      </TR>
+    <% end %>
+  </TABLE>
 </DIV>
-

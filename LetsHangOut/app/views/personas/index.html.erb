@@ -1,6 +1,6 @@
 <DIV class= "index" id="personas_index">
   <H1>Lista de Personas</H1>
-  <%= link_to "Nueva Persona", new_persona_path %> | 
+  <%= link_to "Nueva Persona", new_persona_path %> |
   <%= link_to "Regresar", root_path %>
   <TABLE>
     <TR>
@@ -10,9 +10,9 @@
     </TR>
     <% @personas.each do |persona| %>
       <TR>
-	<TD><%= persona.nombre %></TD>
-	<TD><%= persona.alias %></TD>
-	<TD><%= persona.saldo %></TD>
+        <TD><%= persona.nombre %></TD>
+        <TD><%= persona.alias %></TD>
+        <TD><%= persona.saldo %></TD>
       </TR>
     <% end %>
   </TABLE>
