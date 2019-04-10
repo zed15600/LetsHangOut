@@ -1,0 +1,29 @@
+<DIV class="form" id="restaurante_form">
+  <%= form_with model: @restaurante, local: true do |form| %>
+    <% if @restaurante.errors.any? %>
+      <DIV id="error_explanation">
+        <H2>
+          <%= @restaurante.errors.count %>
+          <%= @restaurante.errors.count!=1 ? "error" : "errores" %>
+          evitaron que este restaurante fuera guardado:
+        </H2>
+        <UL>
+          <% @restaurante.errors.full_messages.each do |msg| %>
+            <LI><%= msg %></LI>
+          <% end %>
+        </UL>
+      </DIV>
+    <% end %>
+    <TABLE>
+      <TR>
+        <TH><%= form.label :nombre %></TH>
+      </TR>
+      <TR>
+        <TD><%= form.text_field :nombre %></TD>
+      </TR>
+      <TR>
+        <TD><%= form.submit "Guardar" %></TD>
+      </TR>
+    </TABLE>
+  <% end %>
+</DIV>
