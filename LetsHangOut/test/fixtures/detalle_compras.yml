@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  compra: one
+  persona: one
+  producto: one
+
+two:
+  compra: two
+  persona: two
+  producto: two

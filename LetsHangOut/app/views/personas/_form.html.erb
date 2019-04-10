@@ -1,0 +1,31 @@
+<DIV class="form" id="personas_form">
+  <%= form_with model: @persona, local: true do |form| %>
+    <% if @persona.errors.any? %>
+      <DIV id="error_explanation">
+        <H2>
+	  <%= @persona.errors.count %>
+  	  <%= @persona.errors.count!=1 ? "error" : "errores" %>
+	  evitaron que esta persona fuera guardada:
+        </H2>
+        <UL>
+	  <% @persona.errors.full_messages.each do |msg| %>
+	    <LI><%= msg %></LI>
+	  <% end %>
+        </UL>
+      </DIV>
+    <% end %>
+    <TABLE>
+      <TR>
+	<TH><%= form.label :nombre %></TH>
+	<TH><%= form.label :alias %></TH>
+      </TR>
+      <TR>
+	<TD><%= form.text_field :nombre %></TD>
+	<TD><%= form.text_field :alias %></TD>
+      </TR>
+      <TR>
+	<TD colspan=2><%= form.submit "Guardar" %></TD>
+      </TR>
+    </TABLE>
+  <% end %>
+</DIV>

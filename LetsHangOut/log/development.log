@@ -1,0 +1,986 @@
+  [1m[35m (440.2ms)[0m  [1m[35mCREATE DATABASE "LetsHangOut_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (236.4ms)[0m  [1m[35mCREATE DATABASE "LetsHangOut_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "LetsHangOut_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreatePersonas (20190405163833)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "personas" ("id" bigserial primary key, "nombre" character varying, "saldo" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190405163833_create_personas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (3.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190405163833"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateProductos (20190405164002)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateProductos (20190405164002)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "productos" ("id" bigserial primary key, "nombre" character varying, "precio" float, "porciones" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190405164002_create_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190405164002"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateCompras (20190405164049)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "compras" ("id" bigserial primary key, "valor" float, "personas" integer, "valorComun" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190405164049_create_compras.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190405164049"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateRestaurantes (20190405164633)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "restaurantes" ("id" bigserial primary key, "nombre" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190405164633_create_restaurantes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190405164633"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddRestauranteToProductos (20190405165716)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "productos" ADD "restaurante_id" bigint[0m
+  ↳ db/migrate/20190405165716_add_restaurante_to_productos.rb:3
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_productos_on_restaurante_id" ON "productos"  ("restaurante_id")[0m
+  ↳ db/migrate/20190405165716_add_restaurante_to_productos.rb:3
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "productos" ADD CONSTRAINT "fk_rails_3a03be87e2"
+FOREIGN KEY ("restaurante_id")
+  REFERENCES "restaurantes" ("id")
+[0m
+  ↳ db/migrate/20190405165716_add_restaurante_to_productos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190405165716"]]
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateDetalleCompras (20190405170059)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "detalle_compras" ("id" bigserial primary key, "compra_id" bigint, "persona_id" bigint, "producto_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_112dcda4f6"
+FOREIGN KEY ("compra_id")
+  REFERENCES "compras" ("id")
+, CONSTRAINT "fk_rails_c1fb4e28e4"
+FOREIGN KEY ("persona_id")
+  REFERENCES "personas" ("id")
+, CONSTRAINT "fk_rails_2f03f0538c"
+FOREIGN KEY ("producto_id")
+  REFERENCES "productos" ("id")
+)[0m
+  ↳ db/migrate/20190405170059_create_detalle_compras.rb:3
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_detalle_compras_on_compra_id" ON "detalle_compras"  ("compra_id")[0m
+  ↳ db/migrate/20190405170059_create_detalle_compras.rb:3
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_detalle_compras_on_persona_id" ON "detalle_compras"  ("persona_id")[0m
+  ↳ db/migrate/20190405170059_create_detalle_compras.rb:3
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_detalle_compras_on_producto_id" ON "detalle_compras"  ("producto_id")[0m
+  ↳ db/migrate/20190405170059_create_detalle_compras.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190405170059"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreatePagos (20190405170532)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "pagos" ("id" bigserial primary key, "persona_id" bigint, "valor" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_b4de374130"
+FOREIGN KEY ("persona_id")
+  REFERENCES "personas" ("id")
+)[0m
+  ↳ db/migrate/20190405170532_create_pagos.rb:3
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_pagos_on_persona_id" ON "pagos"  ("persona_id")[0m
+  ↳ db/migrate/20190405170532_create_pagos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190405170532"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-05 19:45:20.721288"], ["updated_at", "2019-04-05 19:45:20.721288"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 191.156.8.195 at 2019-04-05 16:03:49 -0500
+Cannot render console from 191.156.8.195! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 191.156.8.195 at 2019-04-05 16:03:50 -0500
+Cannot render console from 191.156.8.195! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddAliasToPersonas (20190405201215)
+  [1m[35m (8.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "personas" ADD "alias" character varying[0m
+  ↳ db/migrate/20190405201215_add_alias_to_personas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190405201215"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 191.156.8.195 at 2019-04-05 16:04:08 -0500
+Cannot render console from 191.156.8.195! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 579ms (Views: 571.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/personas" for 191.156.8.195 at 2019-04-05 16:04:12 -0500
+Cannot render console from 191.156.8.195! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (2.6ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:9
+  Rendered personas/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 27ms (Views: 15.4ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/personas/new" for 191.156.8.195 at 2019-04-05 16:04:15 -0500
+Cannot render console from 191.156.8.195! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#new as HTML
+  Rendering personas/new.html.erb within layouts/application
+  Rendered personas/_form.html.erb (0.6ms)
+  Rendered personas/new.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 2.7ms)
+
+
+  
+SyntaxError (/home/ec2-user/LetsHangOut/LetsHangOut/app/views/personas/_form.html.erb:27: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+...pend=( form.submit, "Guardar" );@output_buffer.safe_append='...
+...                              ^
+/home/ec2-user/LetsHangOut/LetsHangOut/app/views/personas/_form.html.erb:30: syntax error, unexpected end, expecting ')'
+'.freeze;   end 
+            ^~~
+/home/ec2-user/LetsHangOut/LetsHangOut/app/views/personas/_form.html.erb:34: syntax error, unexpected ensure, expecting ')'
+          ensure
+          ^~~~~~
+/home/ec2-user/LetsHangOut/LetsHangOut/app/views/personas/_form.html.erb:36: syntax error, unexpected end, expecting ')'
+          end
+          ^~~):
+  
+app/views/personas/_form.html.erb:27: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/personas/_form.html.erb:30: syntax error, unexpected end, expecting ')'
+app/views/personas/_form.html.erb:34: syntax error, unexpected ensure, expecting ')'
+app/views/personas/_form.html.erb:36: syntax error, unexpected end, expecting ')'
+app/views/personas/new.html.erb:3:in `_app_views_personas_new_html_erb___328810811876966265_70248150159620'
+Started GET "/personas/new" for 191.156.8.195 at 2019-04-05 16:04:15 -0500
+Cannot render console from 191.156.8.195! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#new as HTML
+  Rendering personas/new.html.erb within layouts/application
+  Rendered personas/_form.html.erb (0.6ms)
+  Rendered personas/new.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/ec2-user/LetsHangOut/LetsHangOut/app/views/personas/_form.html.erb:27: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+...pend=( form.submit, "Guardar" );@output_buffer.safe_append='...
+...                              ^
+/home/ec2-user/LetsHangOut/LetsHangOut/app/views/personas/_form.html.erb:30: syntax error, unexpected end, expecting ')'
+'.freeze;   end 
+            ^~~
+/home/ec2-user/LetsHangOut/LetsHangOut/app/views/personas/_form.html.erb:34: syntax error, unexpected ensure, expecting ')'
+          ensure
+          ^~~~~~
+/home/ec2-user/LetsHangOut/LetsHangOut/app/views/personas/_form.html.erb:36: syntax error, unexpected end, expecting ')'
+          end
+          ^~~):
+  
+app/views/personas/_form.html.erb:27: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/personas/_form.html.erb:30: syntax error, unexpected end, expecting ')'
+app/views/personas/_form.html.erb:34: syntax error, unexpected ensure, expecting ')'
+app/views/personas/_form.html.erb:36: syntax error, unexpected end, expecting ')'
+app/views/personas/new.html.erb:3:in `_app_views_personas_new_html_erb___328810811876966265_70248150100560'
+Started GET "/personas/new" for 191.156.8.195 at 2019-04-05 17:05:57 -0500
+Cannot render console from 191.156.8.195! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#new as HTML
+  Rendering personas/new.html.erb within layouts/application
+  Rendered personas/_form.html.erb (17.2ms)
+  Rendered personas/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 31ms (Views: 30.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/personas" for 191.156.8.195 at 2019-04-05 17:12:56 -0500
+Cannot render console from 191.156.8.195! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2s/1BS4zzGUSLaAcagvBORAZups/qztpgRinRCTKomfjuK8XCmCU76fA9Dqzlh6UKvI+xrXAMbHxWG/+4gMx4A==", "persona"=>{"nombre"=>"Juan Pablo Calad", "alias"=>"Calad"}, "commit"=>"Guardar"}
+  Rendering personas/create.html.erb within layouts/application
+  Rendered personas/create.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/personas" for 190.9.216.186 at 2019-04-05 18:10:06 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (1.0ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/personas/new" for 190.9.216.186 at 2019-04-05 22:57:56 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#new as HTML
+  Rendering personas/new.html.erb within layouts/application
+  Rendered personas/_form.html.erb (1.7ms)
+  Rendered personas/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 28ms (Views: 14.8ms | ActiveRecord: 4.8ms)
+
+
+Started POST "/personas" for 190.9.216.186 at 2019-04-05 22:58:11 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g7mFd1mmMylDMEjBF8yPVsLPZJp7MxcvF7uedPbSFk6HMbBm0wMIbC7/SUIEud0vqQ+uB6AaWa9zJBJR/KDdbQ==", "persona"=>{"nombre"=>"Juan Pablo Calad Henao", "alias"=>"Calad"}, "commit"=>"Guardar"}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[36mPersona Create (1.2ms)[0m  [1m[32mINSERT INTO "personas" ("nombre", "created_at", "updated_at", "alias") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Juan Pablo Calad Henao"], ["created_at", "2019-04-06 03:58:11.637744"], ["updated_at", "2019-04-06 03:58:11.637744"], ["alias", "Calad"]]
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/personas_controller.rb:19
+  Rendering personas/index.html.erb within layouts/application
+  Rendered personas/index.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 3.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     7:       <TH>Alias</TH>
+     8:       <TH>Saldo</TH>
+     9:     </TR>
+    10:     <% @personas.each do |persona| %>
+    11:       <TR>
+    12: 	<TD><%= persona.nombre %></TD>
+    13: 	<TD><%= persona.alias %></TD>
+  
+app/views/personas/index.html.erb:10:in `_app_views_personas_index_html_erb__2660238354279416901_70248153655900'
+app/controllers/personas_controller.rb:20:in `create'
+Started POST "/personas" for 190.9.216.186 at 2019-04-05 23:00:03 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g7mFd1mmMylDMEjBF8yPVsLPZJp7MxcvF7uedPbSFk6HMbBm0wMIbC7/SUIEud0vqQ+uB6AaWa9zJBJR/KDdbQ==", "persona"=>{"nombre"=>"Juan Pablo Calad Henao", "alias"=>"Calad"}, "commit"=>"Guardar"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[36mPersona Create (0.8ms)[0m  [1m[32mINSERT INTO "personas" ("nombre", "created_at", "updated_at", "alias") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Juan Pablo Calad Henao"], ["created_at", "2019-04-06 04:00:03.079522"], ["updated_at", "2019-04-06 04:00:03.079522"], ["alias", "Calad"]]
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/personas_controller.rb:19
+  Rendering personas/index.html.erb within layouts/application
+  Rendered personas/index.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 2.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     7:       <TH>Alias</TH>
+     8:       <TH>Saldo</TH>
+     9:     </TR>
+    10:     <% @personas.each do |persona| %>
+    11:       <TR>
+    12: 	<TD><%= persona.nombre %></TD>
+    13: 	<TD><%= persona.alias %></TD>
+  
+app/views/personas/index.html.erb:10:in `_app_views_personas_index_html_erb__2660238354279416901_70248149811800'
+app/controllers/personas_controller.rb:20:in `create'
+Started GET "/personas" for 190.9.216.186 at 2019-04-05 23:00:06 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.8ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/personas" for 190.9.216.186 at 2019-04-05 23:01:18 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (1.0ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (24.1ms)
+Completed 200 OK in 40ms (Views: 32.1ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/personas/new" for 190.9.216.186 at 2019-04-05 23:01:19 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#new as HTML
+  Rendering personas/new.html.erb within layouts/application
+  Rendered personas/_form.html.erb (1.7ms)
+  Rendered personas/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 15ms (Views: 14.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/personas" for 190.9.216.186 at 2019-04-05 23:01:48 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"B7iYLJi5lqAYzTnPQ9oPXJNw7SmiyUoOurdKDFBIuPoDMK09Ehyt5XUCOExQr10l+LAntHngBI7eKMYpWjpz2Q==", "persona"=>{"nombre"=>"Carolina Cortés Zapata", "alias"=>"CaroC"}, "commit"=>"Guardar"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[36mPersona Create (0.9ms)[0m  [1m[32mINSERT INTO "personas" ("nombre", "created_at", "updated_at", "alias") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Carolina Cortés Zapata"], ["created_at", "2019-04-06 04:01:48.427897"], ["updated_at", "2019-04-06 04:01:48.427897"], ["alias", "CaroC"]]
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/personas_controller.rb:19
+Redirected to http://54.233.228.170:3001index
+Completed 302 Found in 5ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/personas" for 190.9.216.186 at 2019-04-05 23:02:04 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.9ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/personas/new" for 190.9.216.186 at 2019-04-05 23:02:32 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#new as HTML
+  Rendering personas/new.html.erb within layouts/application
+  Rendered personas/_form.html.erb (1.7ms)
+  Rendered personas/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 27ms (Views: 15.2ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/personas" for 190.9.216.186 at 2019-04-05 23:02:47 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ditdqnb1QG1ImaDUEeao+fE4nekg2N7vlTeZeR087kUKo2i7/FB7KCVWoVcCk/qAmvhXdPvxkG/xqBVcF04lZg==", "persona"=>{"nombre"=>"Carolina Escobar", "alias"=>"CaroE"}, "commit"=>"Guardar"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[36mPersona Create (0.8ms)[0m  [1m[32mINSERT INTO "personas" ("nombre", "created_at", "updated_at", "alias") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Carolina Escobar"], ["created_at", "2019-04-06 04:02:47.690307"], ["updated_at", "2019-04-06 04:02:47.690307"], ["alias", "CaroE"]]
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/personas_controller.rb:19
+Redirected to http://54.233.228.170:3001/personas
+Completed 302 Found in 5ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/personas" for 190.9.216.186 at 2019-04-05 23:02:48 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.7ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/personas" for 190.9.216.186 at 2019-04-05 23:02:48 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.7ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/personas" for 190.9.216.186 at 2019-04-05 23:55:42 -0500
+Cannot render console from 190.9.216.186! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (1.1ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/ws/v1/cluster/apps/new-application" for 165.22.130.160 at 2019-04-09 11:31:30 -0500
+Cannot render console from 165.22.130.160! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/ws/v1/cluster/apps/new-application" for 165.22.130.160 at 2019-04-09 11:33:35 -0500
+Cannot render console from 165.22.130.160! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/personas/new" for 191.156.25.131 at 2019-04-10 11:02:58 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/personas/new" for 191.156.25.131 at 2019-04-10 11:02:58 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to PonerleValorPorDefectoAlSaldoDePersonas (20190408204015)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+Started GET "/personas/new" for 191.156.25.131 at 2019-04-10 11:25:20 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/personas/new" for 191.156.25.131 at 2019-04-10 11:25:21 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to PonerleValorPorDefectoAlSaldoDePersonas (20190408204015)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to PonerleValorPorDefectoAlSaldoDePersonas (20190408204015)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to PonerleValorPorDefectoAlSaldoDePersonas (20190408204015)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to PonerleValorPorDefectoAlSaldoDePersonas (20190408204015)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (4.1ms)[0m  [1m[35mALTER TABLE "personas" ALTER COLUMN "saldo" SET DEFAULT 0.0[0m
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:3
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to PonerleValorPorDefectoAlSaldoDePersonas (20190408204015)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "personas" ALTER COLUMN "saldo" SET DEFAULT 0.0[0m
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "personas" ALTER COLUMN "saldo" SET NOT NULL[0m
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to PonerleValorPorDefectoAlSaldoDePersonas (20190408204015)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "personas" ALTER COLUMN "saldo" SET DEFAULT 0.0[0m
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:3
+  [1m[36mPersona Load (0.3ms)[0m  [1m[34mSELECT  "personas".* FROM "personas" ORDER BY "personas"."id" ASC LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:4
+  [1m[36mPersona Update (3.2ms)[0m  [1m[33mUPDATE "personas" SET "saldo" = $1, "updated_at" = $2 WHERE "personas"."id" = $3[0m  [["saldo", 0.0], ["updated_at", "2019-04-10 16:38:48.841668"], ["id", 1]]
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:6
+  [1m[36mPersona Update (0.2ms)[0m  [1m[33mUPDATE "personas" SET "saldo" = $1, "updated_at" = $2 WHERE "personas"."id" = $3[0m  [["saldo", 0.0], ["updated_at", "2019-04-10 16:38:48.846079"], ["id", 2]]
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:6
+  [1m[36mPersona Update (0.2ms)[0m  [1m[33mUPDATE "personas" SET "saldo" = $1, "updated_at" = $2 WHERE "personas"."id" = $3[0m  [["saldo", 0.0], ["updated_at", "2019-04-10 16:38:48.846959"], ["id", 3]]
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:6
+  [1m[36mPersona Update (0.2ms)[0m  [1m[33mUPDATE "personas" SET "saldo" = $1, "updated_at" = $2 WHERE "personas"."id" = $3[0m  [["saldo", 0.0], ["updated_at", "2019-04-10 16:38:48.847874"], ["id", 4]]
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:6
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "personas" ALTER COLUMN "saldo" SET NOT NULL[0m
+  ↳ db/migrate/20190408204015_ponerle_valor_por_defecto_al_saldo_de_personas.rb:8
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190408204015"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/personas/new" for 191.156.25.131 at 2019-04-10 11:39:11 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PersonasController#new as HTML
+  Rendering personas/new.html.erb within layouts/application
+  Rendered personas/_form.html.erb (1.8ms)
+  Rendered personas/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 29ms (Views: 15.6ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/personas" for 191.156.25.131 at 2019-04-10 11:39:13 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.9ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/personas/new" for 191.156.25.131 at 2019-04-10 11:39:17 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#new as HTML
+  Rendering personas/new.html.erb within layouts/application
+  Rendered personas/_form.html.erb (1.6ms)
+  Rendered personas/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/personas" for 191.156.25.131 at 2019-04-10 11:39:44 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TORRECrnuNsLX/dRvwqx2yn+bwiGZko0ZTFD7OBSX7pZ9m+Ce6NWdFpFEY4sBBECEcvWfWwQ6rzMJHcXV5/TdQ==", "persona"=>{"nombre"=>"Juan Diego Torres Morales", "alias"=>"Jorge"}, "commit"=>"Guardar"}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[36mPersona Create (1.2ms)[0m  [1m[32mINSERT INTO "personas" ("nombre", "created_at", "updated_at", "alias") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Juan Diego Torres Morales"], ["created_at", "2019-04-10 16:39:44.323010"], ["updated_at", "2019-04-10 16:39:44.323010"], ["alias", "Jorge"]]
+  ↳ app/controllers/personas_controller.rb:19
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/personas_controller.rb:19
+Redirected to http://54.233.228.170:3001/personas
+Completed 302 Found in 5ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/personas" for 191.156.25.131 at 2019-04-10 11:39:44 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.8ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/personas" for 191.156.25.131 at 2019-04-10 11:39:45 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.9ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 15ms (Views: 13.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/personas" for 191.156.25.131 at 2019-04-10 11:40:12 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.8ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/personas" for 191.156.25.131 at 2019-04-10 11:40:29 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PersonasController#index as HTML
+  Rendering personas/index.html.erb within layouts/application
+  [1m[36mPersona Load (0.7ms)[0m  [1m[34mSELECT "personas".* FROM "personas"[0m
+  ↳ app/views/personas/index.html.erb:10
+  Rendered personas/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 191.156.25.131 at 2019-04-10 11:40:34 -0500
+Cannot render console from 191.156.25.131! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 28ms (Views: 26.9ms | ActiveRecord: 0.0ms)
+
+
