@@ -1,2 +1,21 @@
-<h1>Productos#index</h1>
-<p>Find me in app/views/productos/index.html.erb</p>
+<DIV class= "index" id="producto_index">
+  <H1>Lista de Productos</H1>
+  <%= link_to "Nuevo Producto", new_producto_path %> |
+  <%= link_to "Regresar", root_path %>
+  <TABLE>
+    <TR>
+      <TH>Restaurante</TH>
+      <TH>Nombre</TH>
+      <TH>Precio</TH>
+      <TH>Porciones</TH>
+    </TR>
+    <% @productos.each do |producto| %>
+      <TR>
+        <TD><%= producto.restaurante.nombre %></TD>
+        <TD><%= producto.nombre %></TD>
+        <TD><%= producto.precio %></TD>
+        <TD><%= producto.porciones %></TD>
+      </TR>
+    <% end %>
+  </TABLE>
+</DIV>

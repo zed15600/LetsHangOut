@@ -1,0 +1,43 @@
+<DIV class="form" id="persona_form">
+  <%= form_with model: @producto, local: true do |form| %>
+    <% if @producto.errors.any? %>
+      <DIV id="error_explanation">
+        <H2>
+          <%= @producto.errors.count %>
+          <%= @producto.errors.count!=1 ? "error" : "errores" %>
+          evitaron que esta persona fuera guardada:
+        </H2>
+        <UL>
+          <% @producto.errors.full_messages.each do |msg| %>
+            <LI><%= msg %></LI>
+          <% end %>
+        </UL>
+      </DIV>
+    <% end %>
+    <TABLE>
+      <TR>
+        <TH><%= form.label :restaurante %></TH>
+        <TH><%= form.label :nombre %></TH>
+        <TH><%= form.label :precio %></TH>
+        <TH><%= form.label :porciones %></TH>
+      </TR>
+      <TR>
+        <TD><%= form.select :restaurante_id, options_for_select(Restaurante.all.collect {|r| [r.name, r.id.to_i]}, :selected => @producto.restaurante_id!=nil ? @producto.restaurante_id : 1)%></TD>
+        <TD><%= form.text_field :nombre %></TD>
+        <TD><%= form.number_field :precio, :value => checkNulity(@producto.precio, 0), :min => 0, :step => "0.01"  %></TD>
+        <TD><%= form.number_field :porciones, :value => @producto.porciones!=nil ? @producto.porciones : 1, :min => 1, :step => 1 %></TD>
+      </TR>
+      <TR>
+        <TD colspan=3><%= form.submit "Guardar" %></TD>
+      </TR>
+    </TABLE>
+  <% end %>
+  <%
+    def checkNulity(value, returnIfNull)
+      if value != nil
+        return value
+      else
+        return returnIfNull
+      end
+  %>
+</DIV>
