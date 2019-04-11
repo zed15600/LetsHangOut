@@ -1,3 +1,3 @@
 class Restaurante < ApplicationRecord
-  has_many: productos
+  has_many :productos
 end

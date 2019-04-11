@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_204015) do
+ActiveRecord::Schema.define(version: 2019_04_11_184744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "compras", force: :cascade do |t|
-    t.float "valor"
-    t.integer "personas"
-    t.float "valorComun"
+    t.float "valor", null: false
+    t.integer "personas", null: false
+    t.float "valorComun", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "detalle_compras", force: :cascade do |t|
-    t.bigint "compra_id"
-    t.bigint "persona_id"
-    t.bigint "producto_id"
+    t.bigint "compra_id", null: false
+    t.bigint "persona_id", null: false
+    t.bigint "producto_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["compra_id"], name: "index_detalle_compras_on_compra_id"
@@ -35,15 +35,15 @@ ActiveRecord::Schema.define(version: 2019_04_08_204015) do
   end
 
   create_table "pagos", force: :cascade do |t|
-    t.bigint "persona_id"
-    t.float "valor"
+    t.bigint "persona_id", null: false
+    t.float "valor", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["persona_id"], name: "index_pagos_on_persona_id"
   end
 
   create_table "personas", force: :cascade do |t|
-    t.string "nombre"
+    t.string "nombre", null: false
     t.float "saldo", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,17 +51,17 @@ ActiveRecord::Schema.define(version: 2019_04_08_204015) do
   end
 
   create_table "productos", force: :cascade do |t|
-    t.string "nombre"
-    t.float "precio"
-    t.integer "porciones"
+    t.string "nombre", null: false
+    t.float "precio", null: false
+    t.integer "porciones", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "restaurante_id"
+    t.bigint "restaurante_id", null: false
     t.index ["restaurante_id"], name: "index_productos_on_restaurante_id"
   end
 
   create_table "restaurantes", force: :cascade do |t|
-    t.string "nombre"
+    t.string "nombre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

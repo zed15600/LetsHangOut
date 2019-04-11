@@ -984,3 +984,79 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 28ms (Views: 26.9ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeModelsNullableFields (20190411184744)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "personas" ALTER COLUMN "nombre" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "nombre" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "precio" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "porciones" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:6
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "porciones" SET DEFAULT 1[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:7
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "restaurante" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:8
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeModelsNullableFields (20190411184744)
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "personas" ALTER COLUMN "nombre" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "nombre" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "precio" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "porciones" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:6
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "porciones" SET DEFAULT 1[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:7
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "productos" ALTER COLUMN "restaurante_id" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:8
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "compras" ALTER COLUMN "valor" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "compras" ALTER COLUMN "personas" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "compras" ALTER COLUMN "valorComun" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "compras" ALTER COLUMN "valorComun" SET DEFAULT 0.0[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:12
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "restaurantes" ALTER COLUMN "nombre" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "detalle_compras" ALTER COLUMN "compra_id" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "detalle_compras" ALTER COLUMN "persona_id" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "detalle_compras" ALTER COLUMN "producto_id" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "pagos" ALTER COLUMN "persona_id" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "pagos" ALTER COLUMN "valor" SET NOT NULL[0m
+  ↳ db/migrate/20190411184744_change_models_nullable_fields.rb:18
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190411184744"]]
+  ↳ bin/rails:9
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8321828760521034150)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9

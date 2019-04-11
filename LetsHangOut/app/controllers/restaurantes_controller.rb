@@ -8,7 +8,7 @@ class RestaurantesController < ApplicationController
   end
 
   def new
-    @Restaurante = Restaurante.new
+    @restaurante = Restaurante.new
   end
 
   def edit
