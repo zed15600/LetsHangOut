@@ -30,6 +30,7 @@ class ProductosController < ApplicationController
   end
 
   private
-  def producto_params
-    params.require(:producto).permit(:restaurante_id, :nombre, :precio, :porciones)
+  	def producto_params
+    	params.require(:producto).permit(:restaurante_id, :nombre, :precio, :porciones)
+		end
 end
