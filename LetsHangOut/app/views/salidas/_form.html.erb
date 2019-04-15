@@ -1,0 +1,46 @@
+<%
+  restaurante_id = check_nulity(@salida.restaurante_id, 1)
+  productos = Producto.where(restaurante_id: restaurante_id).all.collect({|p| [p.id.to_i, p.nombre, p.precio]})
+  personas = Persona.all.collect({|p| [p.nombre, p.id.to_i]})
+%>
+
+<DIV class="form" id="salida_form">
+  <%= form_with model: @salida, local: true do |form| %>
+    <% if @salida.errors.any? %>
+      <DIV id="error_explanation">
+        <H2>
+          <%= @salida.errors.count %>
+          <%= @salida.errors.count!=1 ? "error" : "errores" %>
+          evitaron que esta salida fuera guardada:
+        </H2>
+        <UL>
+          <% @salida.errors.full_messages.each do |msg| %>
+            <LI><%= msg %></LI>
+          <% end %>
+        </UL>
+      </DIV>
+    <% end %>
+    <TABLE>
+      <TR>
+        <TH><%= form.label :nombre %></TH>
+        <TD><%= form.select :restaurante_id, options_for_select(Restaurante.all.collect {|p| [p.nombre, p.id.to_i]}, :selected => check_nulity(@salida.restaurante_id, 1), {}, {:onchange => ""} %></TD>
+      </TR>
+      <TR id="producto1">
+        <TD><%= form.select :producto_id, options_for_select(productos, :selected => check_nulity(@salida.restaurante_id, 1), {}, {:onchange => ""} %></TD>
+      </TR>
+      <TR>
+        <TD colspan=2><%= form.submit "Guardar" %></TD>
+      </TR>
+    </TABLE>
+  <% end %>
+</DIV>
+
+<SCRIPT>
+  function actualizarProductos(restaurante_id){
+    <%
+      restaurante_id = @salida.restaurante_id
+      productos = Producto.where(restaurante_id: restaurante_id).all.collect({|p| [p.id.to_i, p.nombre, p.precio]})
+    %>
+    alert(restaurante_id)
+  }
+</SCRIPT>

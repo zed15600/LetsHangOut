@@ -1,13 +1,4 @@
 <DIV class="form" id="persona_form">
-	<%
-		def check_nulity(value, returnIfNull)
-			if value != nil
-				return value
-			else
-				return returnIfNull
-			end
-		end
-	%>
   <%= form_with model: @producto, local: true do |form| %>
     <% if @producto.errors.any? %>
       <DIV id="error_explanation">

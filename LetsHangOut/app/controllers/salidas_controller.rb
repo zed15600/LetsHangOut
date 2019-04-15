@@ -1,11 +1,14 @@
 class SalidasController < ApplicationController
+
   def index
+    @salidas = Compra.all
   end
 
   def show
   end
 
   def new
+    @salida = Compra.new
   end
 
   def edit

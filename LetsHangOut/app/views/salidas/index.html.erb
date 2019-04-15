@@ -1,2 +1,19 @@
-<h1>Salidas#index</h1>
-<p>Find me in app/views/salidas/index.html.erb</p>
+<DIV class= "index" id="salida_index">
+  <H1>Lista de Salidas</H1>
+  <%= link_to "Nueva", new_salida_path %> |
+  <%= link_to "Regresar", root_path %>
+  <TABLE>
+    <TR>
+      <TH>Restaurante</TH>
+      <TH>¿Cuántos?</TH>
+      <TH>Total</TH>
+    </TR>
+    <% @salidas.each do |salida| %>
+      <TR>
+        <TD><%= salida.restaurante.nombre %></TD>
+        <TD><%= salida.personas %></TD>
+        <TD><%= salida.valor %></TD>
+      </TR>
+    <% end %>
+  </TABLE>
+</DIV>
