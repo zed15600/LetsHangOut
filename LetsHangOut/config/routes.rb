@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :personas
   resources :restaurantes
 	resources :productos
+	resources :salidas
+	resources :compras
 
   root "welcome#index"
 end

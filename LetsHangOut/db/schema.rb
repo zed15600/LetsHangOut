@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_184744) do
+ActiveRecord::Schema.define(version: 2019_04_15_203835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_04_11_184744) do
     t.float "valorComun", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurante_id"
+    t.index ["restaurante_id"], name: "index_compras_on_restaurante_id"
   end
 
   create_table "detalle_compras", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_184744) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "compras", "restaurantes"
   add_foreign_key "detalle_compras", "compras"
   add_foreign_key "detalle_compras", "personas"
   add_foreign_key "detalle_compras", "productos"
