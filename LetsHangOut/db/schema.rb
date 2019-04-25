@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_203835) do
+ActiveRecord::Schema.define(version: 2019_04_25_201750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "compras", force: :cascade do |t|
     t.float "valor", null: false
-    t.integer "personas", null: false
+    t.integer "cantidad_personas", null: false
     t.float "valorComun", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "restaurante_id"
+    t.date "fecha"
+    t.string "descripcion"
     t.index ["restaurante_id"], name: "index_compras_on_restaurante_id"
   end
 
@@ -41,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_04_15_203835) do
     t.float "valor", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fecha"
+    t.string "confirmacion_url"
     t.index ["persona_id"], name: "index_pagos_on_persona_id"
   end
 

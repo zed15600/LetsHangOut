@@ -1,0 +1,41 @@
+<DIV class="form" id="pago_form">
+	<%= form_with model: @pago, local: true do |form| %>
+		<% if @pago.errors.any? %>
+			<DIV id="error_explanation">
+        <H2>
+          <%= @pago.errors.count %>
+          <%= @pago.errors.count!=1 ? "error" : "errores" %>
+          evitaron que esta persona fuera guardada:
+        </H2>
+        <UL>
+          <% @pago.errors.full_messages.each do |msg| %>
+            <LI><%= msg %></LI>
+          <% end %>
+        </UL>
+      </DIV>
+		<% end %>
+		<P>
+			<%= form.label :fecha %>
+			<BR>
+			<%= form.date_field :fecha, {:value => Date.today} %>
+		</P>
+		<P>
+			<%= form.label :persona %>
+			<BR>
+			<%= form.select :persona_id, options_for_select(Persona.all.collect{|p| [p.alias, p.id]}) %>
+		</P>
+		<P>
+			<%= form.label :valor %>
+			<BR>
+			<%= form.number_field :valor, {:value => "0", :step => "0.01"} %>
+		</P>
+		<P>
+			<%= form.label :confirmación %>
+			<BR>
+			<%= form.file_field :confirmacion, {:accept => "image/*"} %>
+		</P>
+		<P>
+			<%= form.submit "Guardar" %>
+		</P>
+	<% end %>
+</DIV>

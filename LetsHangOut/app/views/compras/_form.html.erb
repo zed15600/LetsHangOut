@@ -1,0 +1,163 @@
+<SCRIPT>
+	<%
+		@rest_id = check_nulity(@rest_id, 1)
+  	productos = Producto.where(restaurante_id: @rest_id).all.collect{|p| [p.id.to_i, p.nombre, p.precio, p.porciones]}
+  	personas = Persona.all.collect{|p| [p.alias, p.id.to_i]}
+	%>
+	var productos = <%= productos.collect{|p| [p[0], p[2], p[3]]} %>
+</SCRIPT>
+<DIV class="form" id="salida_form">
+  <%= form_with model: @compra, local: true do |form| %>
+    <% if @compra.errors.any? %>
+      <DIV id="error_explanation">
+        <H2>
+          <%= @compra.errors.count %>
+          <%= @compra.errors.count!=1 ? "error" : "errores" %>
+          evitaron que esta salida fuera guardada:
+        </H2>
+        <UL>
+          <% @compra.errors.full_messages.each do |msg| %>
+            <LI><%= msg %></LI>
+          <% end %>
+        </UL>
+      </DIV>
+    <% end %>
+    <TABLE>
+      <TR>
+				<TH><%= form.label :fecha %></TH>
+				<TH><%= form.label :restaurante %></TH>
+			</TR>
+			<TR>
+				<TD><%= form.date_field :fecha, :value => Date.today %></TD>
+        <TD><%= form.select :restaurante_id, options_for_select(Restaurante.all.collect {|p| [p.nombre, p.id, {}]}, :selected => check_nulity(@rest_id, 1)), {}, {:onchange => "actualizarProductos()"} %></TD>
+      </TR>
+			<TR>
+				<TH colspan="2"><%= form.label :descripción %></TH>
+			</TR>
+			<TR>
+				<TD colspan="2"><%= form.text_area :descripcion, {:style => "width: 100%;"} %></TD>
+			</TR>
+		</TABLE>
+		<TABLE>
+			<TR>
+				<TD colspan="3">
+					<SPAN class="add" onclick="agregarProducto(this.parentElement.parentElement)">Agregar Producto</SPAN> | 
+					<SPAN class="rmv" onclick="removerProducto();">Remover Producto</SPAN>
+				</TD>
+			</TR>
+		</TABLE>
+		<TABLE>
+			<TR>
+				<TH>Valor<BR>Común</TH>
+				<TH>Número de<BR>Personas</TH>
+				<TH><%= form.label :total %></TH>
+			</TR>
+			<TR>
+				<TD><%= form.number_field :valorComun, {:onkeyup => "actualizarTotal();", :style => "width: 65px;"} %></TD>
+				<TD><%= form.number_field :cantidad_personas, {:readonly => true, :style => "width: 65px;"} %></TD>
+				<TD><%= form.number_field :valor, {:readonly => true, :style => "width: 65px;"} %></TD>
+			</TR>
+      <TR>
+        <TD colspan=2><%= form.submit "Guardar" %></TD>
+      </TR>
+    </TABLE>
+	<SCRIPT>
+  	function actualizarProductos() {
+			var form = $("form")[0];
+			form.setAttribute("method", "get");
+			form.setAttribute("action", "/compras/new");
+			form.submit();
+  	}
+		function getProducto(id) {
+			var i;
+			for(i=0; i<productos.length; i++){
+				if(productos[i][0] == parseInt(id)){
+					return productos[i];
+				}
+			}
+		}
+		function renderPersonas(tr, productoId) {
+			var i;
+			var producto = getProducto(productoId);
+			var tds = $("td", tr)
+			for(i=0; i<Math.max(producto[2], tds.length-1); i++){
+				var td;
+				if(i>=tds.length-1){
+					td = document.createElement("td");
+					td.innerHTML = `
+						<%= form.select :persona_id, options_for_select(personas), {}, {
+							:class => "persona", 
+							:name => "compra[persona_id][]",
+							:onchange => "actualizarPersonas();"
+						} %>
+					`;
+					tr.appendChild(td);
+				}else{
+					if(i>producto[2]-1){
+						td = tds[i+1];
+						tr.removeChild(td);
+					}
+				}
+			}
+			actualizarPersonas();
+		}
+		function agregarProducto(insertBefore){
+			var tr = document.createElement("tr");
+			tr.setAttribute("class", "producto")
+			tr.innerHTML = `<TD><%= 
+				form.select :producto_id, options_for_select(productos.collect{|p| [p[1], p[0]]}), {}, {
+					:class => "producto",
+					:name => "compra[producto_id][]",
+					:onchange => "
+						renderPersonas(this.parentElement.parentElement, this.value);
+						actualizarTotal();
+					"
+				}
+			 %></TD>`;
+			var table = $("tbody")[1]
+			table.insertBefore(tr, insertBefore)
+			renderPersonas(tr, productos[0]);
+			actualizarTotal();
+		}
+		function removerProducto(){
+			trProductos = $("tr.producto");
+			if(trProductos.length >1){
+				$("tbody")[1].removeChild(trProductos.last()[0]);
+			}
+			actualizarTotal();
+		}
+		function actualizarTotal(){
+			var total = $("#compra_valor")[0];
+			var valorComunField = $("#compra_valorComun")[0];
+			var selectProductos = $("select.producto");
+			var valorComun = valorComunField.value != "" ? parseInt(valorComunField.value) : 0;
+			var i;
+			var j;
+			var val = valorComun;
+			for(i=0; i<selectProductos.length; i++){
+				for(j=0; j<productos.length; j++){
+					if(productos[j][0] == selectProductos[i].value){
+						val += productos[j][1]
+						break;
+					}
+				}
+			}
+			total.value = val;
+		}
+		function actualizarPersonas(){
+			var personasInput = $("#compra_cantidad_personas")[0];
+			var selectPersonas = $("select.persona");
+			var personas = [];
+			var i;
+			for(i=0; i<selectPersonas.length; i++){
+				if(!personas.includes(selectPersonas[i].value)){
+					personas.push(selectPersonas[i].value);
+				}
+			}
+			personasInput.value = personas.length;
+		} 
+		agregarProducto($("span.add")[0].parentNode.parentNode, 0)
+		actualizarTotal();
+	</SCRIPT>
+	<% end %>
+</DIV>

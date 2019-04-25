@@ -1,0 +1,21 @@
+<DIV class="index", id="pago_index">
+	<h1>Lista de Pagosx</h1>
+	<%= link_to "Nuevo", new_pago_path %> | 
+	<%= link_to "Regresar", root_path %>
+	<TABLE>
+		<TR>
+			<TH>Fecha</TH>
+			<TH>Persona</TH>
+			<TH>Valor</TH>
+			<TH>Confirmación</TH>
+		</TR>
+		<% @pagos.each do |pago| %>
+			<TR>
+				<TD><%= pago.fecha %></TD>
+				<TD><%= pago.persona.nombre %></TD>
+				<TD><%= pago.valor %></TD>
+				<TD><%= pago.confirmacion_url %></TD>
+			</TR>
+		<% end %>
+	</TABLE>
+</DIV>

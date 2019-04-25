@@ -1,0 +1,23 @@
+<DIV class= "index" id="compra_index">
+  <H1>Lista de Salidas</H1>
+  <%= link_to "Nueva", new_compra_path %> |
+  <%= link_to "Regresar", root_path %>
+  <TABLE>
+    <TR>
+			<TH>Fecha</TH>
+      <TH>Restaurante</TH>
+      <TH>¿Cuántos?</TH>
+			<TH>Descripción</TH>
+      <TH>Total</TH>
+    </TR>
+    <% @compras.each do |compra| %>
+      <TR>
+				<TD><%= compra.fecha %></TD>
+        <TD><%= compra.restaurante.nombre %></TD>
+        <TD><%= compra.cantidad_personas %></TD>
+				<TD><%= compra.descripcion %></TD>
+        <TD><%= compra.valor %></TD>
+      </TR>
+    <% end %>
+  </TABLE>
+</DIV>
